@@ -45,5 +45,52 @@ function enrollment(data, campus = campusDefault, cohort = cohortDefault) {
   return objEnrollment;
 }
 
-var temp = enrollment(data);
+// var temp = enrollment(data);
 // fin de funcionalidad de Enrollment
+
+// inicio de funcionalidad de Achievement
+function getTargetedStudents(students) {
+  var targetedStudents = 0;
+  var studentsLength = getTotalStudents(students);
+
+  for (var i = 0; i < studentsLength; i++) {
+    var student = students[i];
+
+    if (student.active) {
+      var totalTech = 0, totalHse = 0;
+      var sprints = student.sprints;
+      var sprintsLength = sprints.length;
+      var totalSprints = sprints.length;
+      var hasMetTechTarget = 0;
+      var hasMetHseTarget = 0;
+
+      for (var j = 0; j < sprintsLength; j++) {
+        var sprint = sprints[j];
+
+        totalTech += sprint.score.tech;
+        totalHse += sprint.score.hse;
+      }
+
+      hasMetTechTarget = (totalTech / totalSprints) > 1260;
+      hasMetHseTarget = (totalHse / totalSprints) > 840;
+
+      if (hasMetTechTarget && hasMetHseTarget) {
+        targetedStudents++;
+      }
+    }
+  }
+}
+
+function achievement(data, campus = campusDefault, cohort = cohortDefault) {
+  var objAchievement = {};
+  var students = getStudents(data, campus, cohort);
+
+  objAchievement.targetedStudents = getTargetedStudents(students);
+  // objAchievement.targetedStudentsPercent = getAchievementPercent(totalStudents, targetedStudents);
+  // objAchievement.totalStudents = getActiveStudents(students);
+
+  return objAchievement;
+}
+
+var temp = achievement(data);
+// fin de funcionalidad de Achievement
