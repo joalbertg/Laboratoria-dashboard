@@ -233,3 +233,7 @@ function techSkills(data, campus = campusDefault, cohort = cohortDefault) {
 var temp = techSkills(data);
 
 // --- fin funcionalidad de Tech Skills
+
+// *** inicio funcionalidad de Life Skills
+
+// --- fin funcionalidad de Life Skills
