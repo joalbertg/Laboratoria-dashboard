@@ -1,7 +1,7 @@
 var TECH = 1800;
 var HSE = 1200;
 
-// inicio de funcionalidad de Enrollment
+// *** inicio de funcionalidad de Enrollment
 
 // obtiene el total de deserciones
 function getDropoutStudents(students) {
@@ -44,17 +44,17 @@ function enrollment(data, campus = campusDefault, cohort = cohortDefault) {
 }
 
 // var temp = enrollment(data);
-// fin de funcionalidad de Enrollment
+// --- fin de funcionalidad de Enrollment
 
-// inicio de funcionalidad de Achievement
+// *** inicio de funcionalidad de Achievement
 
 // 70% de la cantidad total de puntos tech
-function metTech() {
+function calcMetTech() {
   return TECH * 0.7;
 }
 
 // 70% de la cantidad total de puntos hse
-function metHse() {
+function calcMetHse() {
   return HSE * 0.7;
 }
 
@@ -63,8 +63,8 @@ function getTargetedStudents(students) {
   var targetedStudents = 0;
   var totalStudents = students.length;
 
-  metTech = metTech();
-  metHse = metHse();
+  metTech = calcMetTech();
+  metHse = calcMetHse();
 
   for (var i = 0; i < totalStudents; i++) {
     var student = students[i];
@@ -135,9 +135,9 @@ function achievement(data, campus = campusDefault, cohort = cohortDefault) {
 }
 
 // var temp = achievement(data);
-// fin de funcionalidad de Achievement
+// --- fin de funcionalidad de Achievement
 
-// inicio de funcionalidad de Net promoter score
+// *** inicio de funcionalidad de Net promoter score
 
 function getProPasDet(ratings) {
   var obj = {};
@@ -176,9 +176,60 @@ function netPrometerScore(data, campus = campusDefault, cohort = cohortDefault) 
   var objNetPrometerScore = getNetPrometerScore(data, campus, cohort);
 
   objNetPrometerScore.nps = calcNetPrometerScore(objNetPrometerScore.promotersPercent, objNetPrometerScore.detractorsPercent);
-  
+
   return objNetPrometerScore;
 }
 
 var temp = netPrometerScore(data);
-// fin de funcionalidad de Net promoter score
+// --- fin de funcionalidad de Net promoter score
+
+// *** inicio funcionalidad de Tech Skills
+
+function getTechTargetedStudents(students) {
+  var targetedStudents = 0;
+  var totalStudents = students.length;
+  var metTech = calcMetTech();
+
+  for (var i = 0; i < totalStudents; i++) {
+    var student = students[i];
+
+    if (student.active) {
+      var techTotal = 0;
+      var sprints = student.sprints;
+      var totalSprints = sprints.length;
+      var averageTech = 0;
+
+      for (var j = 0; j < totalSprints; j++) {
+        var sprint = sprints[j];
+
+        techTotal += sprint.score.tech;
+      }
+
+      averageTech = techTotal / totalSprints;
+
+      if (averageTech > metTech) {
+        targetedStudents++;
+      }
+    }
+  }
+  return targetedStudents;
+}
+
+function getTechTargetedPercent(targetedStudents, totalStudents) {
+  return (targetedStudents / totalStudents * 100).toFixed(2);
+}
+
+function techSkills(data, campus = campusDefault, cohort = cohortDefault) {
+  var objTechSkills = {};
+  var students = getStudents(data, campus, cohort);
+
+  objTechSkills.targetedStudents = getTechTargetedStudents(students);
+  objTechSkills.totalStudents = getActiveStudents(students);
+  objTechSkills.targetedStudentsPercent = getTechTargetedPercent(objTechSkills.targetedStudents, objTechSkills.totalStudents);
+
+  return objTechSkills;
+}
+
+var temp = techSkills(data);
+
+// --- fin funcionalidad de Tech Skills
