@@ -230,10 +230,72 @@ function techSkills(data, campus = campusDefault, cohort = cohortDefault) {
   return objTechSkills;
 }
 
-var temp = techSkills(data);
+// var temp = techSkills(data);
 
 // --- fin funcionalidad de Tech Skills
 
 // *** inicio funcionalidad de Life Skills
 
+function getHseAverage(students) {
+  var targetedStudents = 0, overallHse = 0;
+  var totalStudents = students.length;
+
+  for (var i = 0; i < totalStudents; i++) {
+    var student = students[i];
+
+    if (student.active) {
+      var totalHse = 0;
+      var sprints = student.sprints;
+      var totalSprints = sprints.length;
+
+      for (var j = 0; j < totalSprints; j++) {
+        var sprint = sprints[j];
+
+        totalHse += sprint.score.hse;
+      }
+
+      overallHse += Number((totalHse / totalSprints).toFixed(2));
+      targetedStudents++;
+    }
+  }
+  return (overallHse / targetedStudents).toFixed(2);
+}
+
+function getHseTargetedStudents(students) {
+  var targetedStudents = 0;
+
+  for (var i = 0, l = students.length; i < l; i++) {
+    var student = students[i];
+
+    if (student.active) {
+      var hseTotal = 0;
+      var sprints = student.sprints;
+
+      for (var j = 0, sl = sprints.length; j < sl; j++) {
+        var sprint = sprints[j];
+
+        hseTotal += sprint.score.hse;
+      }
+
+      var averageHse = hseTotal / sprints.length;
+
+      if (averageHse > 840) {
+        targetedStudents++;
+      }
+    }
+  }
+  return targetedStudents;
+}
+
+function lifeSkills(data, campus = campusDefault, cohort = cohortDefault) {
+  var objLifeSkills = {};
+  var students = getStudents(data, campus, cohort);
+
+  objLifeSkills.avgHse = getHseAverage(students);
+  objLifeSkills.targetedStudents = getHseTargetedStudents(students);
+
+  return objLifeSkills;
+}
+
+var temp = lifeSkills(data);
 // --- fin funcionalidad de Life Skills
