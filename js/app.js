@@ -41,4 +41,8 @@ function getStudents(data, campus = campusDefault, cohort = cohortDefault) {
   return data[campus][cohort].students;
 }
 
+// Función que retorna los ratings del campus y cohort seleccionado
+function getRatings(data, campus, cohort) {
+  return data[campus][cohort].ratings;
+}
 /* var temp = getStudents(data); */

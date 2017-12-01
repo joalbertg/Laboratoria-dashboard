@@ -3,15 +3,10 @@ var HSE = 1200;
 
 // inicio de funcionalidad de Enrollment
 
-// obtiene el total de estudiantes
-function getTotalStudents(students) {
-  return students.length;
-}
-
 // obtiene el total de deserciones
 function getDropoutStudents(students) {
   var totalDropouts = 0;
-  var totalStudents = getTotalStudents(students);
+  var totalStudents = students.length;
 
   for (var i = 0; i < totalStudents; i++) {
     var student = students[i];
@@ -39,7 +34,7 @@ function enrollment(data, campus = campusDefault, cohort = cohortDefault) {
   var objEnrollment = {};
   var students = getStudents(data, campus, cohort);
 
-  var totalStudents = getTotalStudents(students);
+  var totalStudents = students.length;
   var totalDropouts = getDropoutStudents(students);
 
   objEnrollment.studentsCurrentEnrolled = getStudentsCurrentEnrolled(totalStudents, totalDropouts);
@@ -66,7 +61,7 @@ function metHse() {
 function getTargetedStudents(students) {
   // estudiantes que superan
   var targetedStudents = 0;
-  var totalStudents = getTotalStudents(students);
+  var totalStudents = students.length;
 
   metTech = metTech();
   metHse = metHse();
@@ -110,7 +105,7 @@ function getAchievementPercent(students, targetedStudents) {
 // obtiene el total de estudiantes activos
 function getActiveStudents(students) {
   var totalActiveStudents = 0;
-  var totalStudents = getTotalStudents(students);
+  var totalStudents = students.length;
 
   for (var i = 0; i < totalStudents; i++) {
     var student = students[i];
@@ -139,5 +134,51 @@ function achievement(data, campus = campusDefault, cohort = cohortDefault) {
   return objAchievement;
 }
 
-var temp = achievement(data);
+// var temp = achievement(data);
 // fin de funcionalidad de Achievement
+
+// inicio de funcionalidad de Net promoter score
+
+function getProPasDet(ratings) {
+  var obj = {};
+  var promoters = 0, passive = 0, detractors = 0;
+  var totalSprints = ratings.length;
+
+  for (var i = 0; i < totalSprints; i++) {
+    var sprint = ratings[i];
+
+    promoters += sprint.nps.promoters;
+    passive += sprint.nps.passive;
+    detractors += sprint.nps.detractors;
+  }
+
+  obj.promotersPercent = (promoters / totalSprints).toFixed(2);
+  obj.passivePercent = (passive / totalSprints).toFixed(2);
+  obj.detractorsPercent = (detractors / totalSprints).toFixed(2);
+
+  return obj;
+}
+
+function getNetPrometerScore(data, campus = campusDefault, cohort = cohortDefault) {
+  var objNetPrometerScore = null;
+  var ratings = getRatings(data, campus, cohort);
+
+  objNetPrometerScore = getProPasDet(ratings);
+
+  return objNetPrometerScore;
+}
+
+function calcNetPrometerScore(promotersPercent, detractorsPercent) {
+  return promotersPercent - detractorsPercent;
+}
+
+function netPrometerScore(data, campus = campusDefault, cohort = cohortDefault) {
+  var objNetPrometerScore = getNetPrometerScore(data, campus, cohort);
+
+  objNetPrometerScore.nps = calcNetPrometerScore(objNetPrometerScore.promotersPercent, objNetPrometerScore.detractorsPercent);
+  
+  return objNetPrometerScore;
+}
+
+var temp = netPrometerScore(data);
+// fin de funcionalidad de Net promoter score
