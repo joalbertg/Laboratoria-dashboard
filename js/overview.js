@@ -342,3 +342,24 @@ function teacherRating(data, campus = campusDefault, cohort = cohortDefault) {
 
 var temp = teacherRating(data);
 // --- fin funcionalidad de Teacher reating
+
+// *** inicio funcionalidad de Jedi master rating
+
+function getLastJediMasterRating(ratings) {
+  var jediMasterRating = 0;
+  // ultimo sprint
+  var lastSprint = ratings.length - 1;
+
+  jediMasterRating = ratings[lastSprint].jedi;
+
+  return jediMasterRating.toFixed(2);
+}
+
+function jediMasterRating(data, campus = campusDefault, cohort = cohortDefault) {
+  var ratings = getRatings(data, campus, cohort);
+  
+  return getLastJediMasterRating(ratings);
+}  
+
+/* var temp = jediMasterRating(data); */
+// --- fin funcionalidad de Jedi master rating
