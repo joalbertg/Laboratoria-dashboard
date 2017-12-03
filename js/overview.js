@@ -1,6 +1,3 @@
-var TECH = 1800;
-var HSE = 1200;
-
 // *** inicio de funcionalidad de Enrollment
 
 // obtiene el total de deserciones

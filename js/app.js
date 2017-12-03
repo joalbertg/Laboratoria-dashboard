@@ -5,6 +5,10 @@
 // Puedes hacer uso de la base de datos a través de la variable `data`
 console.log(data);
 
+// constantes para total de puntos tech y hse
+var TECH = 1800;
+var HSE = 1200;
+
 // se crearan las keys cohorts y cohortsList, las cuales representan
 // el numero de cohortes y una lista de las cohortes respectivamente
 var centers = [
