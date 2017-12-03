@@ -297,5 +297,27 @@ function lifeSkills(data, campus = campusDefault, cohort = cohortDefault) {
   return objLifeSkills;
 }
 
-var temp = lifeSkills(data);
+/* var temp = lifeSkills(data); */
 // --- fin funcionalidad de Life Skills
+
+// *** inicio funcionalidad de Student satisfaction
+
+function getStudentSatisfaction(ratings) {
+  var studentSatisfaction = 0;
+  // ultimo sprint
+  var lastSprint = ratings.length - 1;
+
+  var studentRating = ratings[lastSprint].student;
+  studentSatisfaction = studentRating.cumple + studentRating.supera;
+
+  return studentSatisfaction.toFixed(2);
+}
+
+function studentSatisfaction(data, campus = campusDefault, cohort = cohortDefault) {
+  var ratings = getRatings(data, campus, cohort);
+  
+  return getStudentSatisfaction(ratings);
+}
+
+/* var temp = studentSatisfaction(data); */
+// --- fin funcionalidad de Student satisfaction
