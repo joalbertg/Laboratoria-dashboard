@@ -1,18 +1,321 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <title>Data Dashboard</title>
-    <link rel='stylesheet' href='css/main.css'>
-  </head>
-  <body>
 
-		<!-- Base de datos -->
-    <script src='./js/data.js'></script>
-    
-		<!-- Aquí va tus archivos JS -->
-    <script src='./js/app.js'></script>
-    <script src='js/overview.js'></script>
-    <script src='js/students.js'></script>
-  </body>
+<head>
+  <meta charset='utf-8'>
+  <title>Data Dashboard</title>
+  <link rel="shortcut icon" href="assets/icons/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link rel='stylesheet' href='css/main.css'>
+</head>
+
+<body>
+  <header>
+    <div class="center">
+      <img class="width-16 logo" src="assets/images/logo-laboratoria.svg" alt="Laboratoria">
+    </div>
+  </header>
+  <nav class="bold menu">
+    <ul>
+      <li class="cohort">
+        <h1>SANTIAGO DE CHILE 2017 - II</h1>
+      </li>
+      <li class="dropdown">
+        <span>&#9660;</span>
+        <ul class="hide item-list">
+          <!-- LIMA -->
+          <li class="line">
+            <span class="checkbox"></span> LIMA</li>
+          <li>
+            <span class="checkbox"></span> 2015 - I</li>
+          <li>
+            <span class="checkbox"></span> 2015 - II</li>
+          <li>
+            <span class="checkbox"></span> 2016 - I</li>
+          <li>
+            <span class="checkbox"></span> 2016 - II</li>
+          <li>
+            <span class="checkbox"></span> 2017 - I</li>
+          <li>
+            <span class="checkbox"></span> 2017 - II</li>
+          <!-- AREQUIPA  -->
+          <li class="line">
+            <span class="checkbox"></span> AREQUIPA</li>
+          <li>
+            <span class="checkbox"></span> 2015 - I</li>
+          <li>
+            <span class="checkbox"></span> 2015 - II</li>
+          <li>
+            <span class="checkbox"></span> 2016 - I</li>
+          <li>
+            <span class="checkbox"></span> 2016 - II</li>
+          <li>
+            <span class="checkbox"></span> 2017 - I</li>
+          <li>
+            <span class="checkbox"></span> 2017 - II</li>
+          <!--SANTIAGO  -->
+          <li class="line">
+            <span class="checkbox"></span> SANTIAGO DE CHILE</li>
+          <li>
+            <span class="checkbox"></span> 2015 - I</li>
+          <li>
+            <span class="checkbox"></span> 2015 - II</li>
+          <li>
+            <span class="checkbox"></span> 2016 - I</li>
+          <li>
+            <span class="checkbox"></span> 2016 - II</li>
+          <li>
+            <span class="checkbox"></span> 2017 - I</li>
+          <li>
+            <span class="checkbox"></span> 2017 - II</li>
+          <!-- CDMX -->
+          <li class="line">
+            <span class="checkbox"></span> CIUDAD DE MÉXICO</li>
+          <li>
+            <span class="checkbox"></span> 2015 - I</li>
+          <li>
+            <span class="checkbox"></span> 2015 - II</li>
+          <li>
+            <span class="checkbox"></span> 2016 - I</li>
+          <li>
+            <span class="checkbox"></span> 2016 - II</li>
+          <li>
+            <span class="checkbox"></span> 2017 - I</li>
+          <li>
+            <span class="checkbox"></span> 2017 - II</li>
+        </ul>
+      </li>
+    </ul>
+    <ul>
+      <li class="menu-nav active">OVERVIEW</li>
+      <li class="menu-nav">
+        <a href="views/students.html">STUDENTS</a>
+      </li>
+      <li class="menu-nav">TEACHERS</li>
+    </ul>
+  </nav>
+  <main>
+    <section class="container">
+      <div class="graphic-card-small">
+        <h4 class="title-card">ENROLLMENT</h4>
+        <div class="skills">
+          <div class="skills-medium inline-block center">
+            <h4 id="students-enrolled">120</h4>
+            <p># students currently enrolled</p>
+          </div>
+          <div class="skills-medium inline-block center">
+            <h4 class="text-danger">
+              <span id="students-dropout">20</span>%</h4>
+            <p>% dropout</p>
+          </div>
+        </div>
+        <div class="graph center">
+          <img class="" src="assets/images/bar-graph.png" alt="">
+        </div>
+      </div>
+      <div class="graphic-card-small">
+        <h4 class="title-card">ACHIEVEMENT</h4>
+        <div class="skills">
+          <div class="skills-medium inline-block center">
+            <h4 id="students-targeted">105</h4>
+            <p># students that meet the target</p>
+          </div>
+          <div class="skills-medium inline-block center">
+            <h4>
+              <span id="achievement-percent">78</span>%</h4>
+            <p>% of total (
+              <span id="active-students">135</span>)</p>
+          </div>
+        </div>
+        <div class="graph center">
+          <img class="" src="assets/images/graph.png" alt="">
+        </div>
+      </div>
+      <div class="graphic-card-small">
+        <h4 class="title-card">NET PROMOTER SCORE</h4>
+        <div class="skills">
+          <div class="skills-medium inline-block center">
+            <h4>
+              <span id="cumulative-nps">78</span>%</h4>
+            <p>% cumulative nps</p>
+          </div>
+          <div class="skills-medium inline-block center">
+            <p class="nps">
+              <span id="cumulative-promoters">60</span> % Promoters</p>
+            <p class="nps">
+              <span id="cumulative-passive">30</span> % Passive</p>
+            <p class="nps">
+              <span id="cumulative-detractors">10</span> % Detractors</p>
+          </div>
+        </div>
+        <div class="graph center">
+          <img class="" src="assets/images/graph.png" alt="">
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <div class="graphic-card-large menu">
+        <h4 class="title-card">TECH SKILLS</h4>
+        <ul>
+          <li class="dropdown">
+            <span>&#9660;</span>
+            <ul class="hide item-list">
+              <li class="line">
+                <span class="checkbox"></span> COMMON CORE</li>
+              <li>
+                <span class="checkbox"></span> Sprint 1: Create an interactive site</li>
+              <li>
+                <span class="checkbox"></span> Sprint 2: Create an interactive site</li>
+              <li>
+                <span class="checkbox"></span> Sprint 3: Create an interactive site</li>
+              <li>
+                <span class="checkbox"></span> Sprint 4: Create an interactive site</li>
+
+              <li class="col-10 line">
+                <span class="checkbox"></span> Javascript</li>
+              <li class="col-10">
+                <span class="checkbox"></span> Sprint 5: Create an interactive site</li>
+              <li class="col-10">
+                <span class="checkbox"></span> Sprint 6: Create an interactive site</li>
+              <li class="col-10">
+                <span class="checkbox"></span> Sprint 7: Create an interactive site</li>
+              <li class="col-10">
+                <span class="checkbox"></span> Sprint 8: Create an interactive site</li>
+
+              <li class="col-10 line">
+                <span class="checkbox"></span> UX Design</li>
+              <li class="col-10">
+                <span class="checkbox"></span> Sprint 5: Create an interactive site</li>
+              <li class="col-10">
+                <span class="checkbox"></span> Sprint 6: Create an interactive site</li>
+              <li class="col-10">
+                <span class="checkbox"></span> Sprint 7: Create an interactive site</li>
+              <li class="col-10">
+                <span class="checkbox"></span> Sprint 8: Create an interactive site</li>
+            </ul>
+          </li>
+        </ul>
+        <div class="skills">
+          <div class="skills-large center inline-block">
+            <h4 id="tech-targeted-students">90</h4>
+            <p># students that meet the target</p>
+          </div>
+          <div class="skills-large center inline-block">
+            <h4>
+              <span id="tech-targeted-percent"></span>%</h4>
+            <p>% of total (
+              <span id="total-students">135</span>)</p>
+          </div>
+        </div>
+        <div class="graph-container mt-21">
+          <div class="left width-60 height-100">
+            <img class="bar-chart" src="assets/images/rectangular-graphic.png" alt="Bar chart - tech">
+          </div>
+          <div class="right width-40 height-100">
+            <div class="pie-chart center">
+              <img src="assets/images/circle-graphic.png" alt="Pie chart - tech">
+            </div>
+            <p class="title-card">
+              <span class="green-mark"></span> # students that meet the target</p>
+            <p class="title-card">
+              <span class="red-mark"></span> # students that don't meet the target</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <div class="graphic-card-large menu">
+        <h4 class="title-card">LIFE SKILLS</h4>
+        <ul>
+          <li class="dropdown">
+            <span>&#9660;</span>
+            <ul class="hide item-list">
+              <li class="line">
+                <span class="checkbox"></span> HSE</li>
+              <li>
+                <span class="checkbox"></span> Sprint 1: Create an interactive site</li>
+              <li>
+                <span class="checkbox"></span> Sprint 2: Create an interactive site</li>
+              <li>
+                <span class="checkbox"></span> Sprint 3: Create an interactive site</li>
+              <li>
+                <span class="checkbox"></span> Sprint 4: Create an interactive site</li>
+            </ul>
+          </li>
+        </ul>
+        <div class="skills">
+          <div class="skills-large center inline-block">
+            <h4 id="avg-hse-students">80</h4>
+            <p># overall class average</p>
+          </div>
+          <div class="skills-large center inline-block">
+            <h4 id="hse-targeted-students">62</h4>
+            <p># of students that meet the target</p>
+          </div>
+        </div>
+        <div class="graph-container mt-21">
+          <div class="left width-60 height-100">
+            <img class="bar-chart" src="assets/images/rectangular-graphic.png" alt="Bar chart - hse">
+          </div>
+          <div class="right width-40 height-100">
+            <div class="pie-chart center">
+              <img src="assets/images/circle-graphic.png" alt="Pie chart - hse">
+            </div>
+            <p class="title-card">
+              <span class="green-mark"></span> # students that meet the target</p>
+            <p class="title-card">
+              <span class="red-mark"></span> # students that don't meet the target</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <div class="graphic-card-small">
+        <h4 class="title-card">STUDENT SATISFACTION</h4>
+        <div class="skills">
+          <div class="skills-medium center inline-block">
+            <h4>
+              <span id="satisfaction-percent">70</span>%</h4>
+            <p>% meeting or exceeding expectations (cumulative)</p>
+          </div>
+        </div>
+        <div class="graph center">
+          <img class="" src="assets/images/graph.png" alt="">
+        </div>
+      </div>
+      <div class="graphic-card-small">
+        <h4 class="title-card">TEACHER RATING</h4>
+        <div class="skills">
+          <div class="skills-medium inline-block center">
+            <h4 id="teacher-rating">4.2</h4>
+            <p>overall teacher rating (cumulative)</p>
+          </div>
+        </div>
+        <div class="graph center">
+          <img class="" src="assets/images/graph.png" alt="">
+        </div>
+      </div>
+      <div class="graphic-card-small">
+        <h4 class="title-card">JEDI MASTER RATING</h4>
+        <div class="skills">
+          <div class="skills-medium center inline-block">
+            <h4 id="jedi-rating">5.0</h4>
+            <p>overall jedi rating (cumulative)</p>
+          </div>
+        </div>
+        <div class="graph center">
+          <img class="" src="assets/images/graph.png" alt="">
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Base de datos -->
+  <script src='./js/data.js'></script>
+
+  <!-- Aquí va tus archivos JS -->
+  <script src='./js/app.js'></script>
+  <script src='js/overview.js'></script>
+  <script src='js/students.js'></script>
+</body>
+
 </html>
