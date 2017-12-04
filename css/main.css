@@ -282,6 +282,8 @@ aside, nav li, section li, .checkbox, .inline-block {
 
 .item-list {
   width: 30%;
+  z-index: 100;
+  
 }
 
 .graphic-card-small {
