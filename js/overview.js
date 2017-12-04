@@ -310,13 +310,13 @@ function getLastStudentSatisfaction(ratings) {
   return studentSatisfaction.toFixed(2);
 }
 
-function studentSatisfaction(data, campus = campusDefault, cohort = cohortDefault) {
+function lastStudentSatisfaction(data, campus = campusDefault, cohort = cohortDefault) {
   var ratings = getRatings(data, campus, cohort);
 
   return getLastStudentSatisfaction(ratings);
 }
 
-/* var temp = studentSatisfaction(data); */
+/* var temp = lastStudentSatisfaction(data); */
 // --- fin funcionalidad de Student satisfaction
 
 // *** inicio funcionalidad de Teacher reating
@@ -331,13 +331,13 @@ function getLastTeacherRating(ratings) {
   return teacherRating.toFixed(2);
 }
 
-function teacherRating(data, campus = campusDefault, cohort = cohortDefault) {
+function lastTeacherRating(data, campus = campusDefault, cohort = cohortDefault) {
   var ratings = getRatings(data, campus, cohort);
 
   return getLastTeacherRating(ratings);
 }
 
-var temp = teacherRating(data);
+// var temp = lastTeacherRating(data);
 // --- fin funcionalidad de Teacher reating
 
 // *** inicio funcionalidad de Jedi master rating
@@ -352,11 +352,11 @@ function getLastJediMasterRating(ratings) {
   return jediMasterRating.toFixed(2);
 }
 
-function jediMasterRating(data, campus = campusDefault, cohort = cohortDefault) {
+function lastJediMasterRating(data, campus = campusDefault, cohort = cohortDefault) {
   var ratings = getRatings(data, campus, cohort);
   
   return getLastJediMasterRating(ratings);
 }  
 
-/* var temp = jediMasterRating(data); */
+/* var temp = lastJediMasterRating(data); */
 // --- fin funcionalidad de Jedi master rating

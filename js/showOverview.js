@@ -39,4 +39,53 @@ function showNetPrometerScore(data, campus = campusDefault, cohort = cohortDefau
 }
 
 showNetPrometerScore(data);
+
+function showTechSkills(data, campus = campusDefault, cohort = cohortDefault) {
+  var techTargeted = document.getElementById('tech-targeted-students');
+  var techTargetedPercent = document.getElementById('tech-targeted-percent');
+  var totalActiveStudents = document.getElementById('total-students');
+
+  var obj = techSkills(data, campus, cohort);
+
+  techTargeted.textContent = obj.targetedStudents;
+  techTargetedPercent.textContent = obj.targetedStudentsPercent;
+  totalActiveStudents.textContent = obj.totalStudents;
+}
+
+showTechSkills(data);
+
+function showLifeSkills(data, campus = campusDefault, cohort = cohortDefault) {
+  var avgHseStudents = document.getElementById('avg-hse-students');
+  var hseTargetedStudents = document.getElementById('hse-targeted-students');
+
+  var obj = lifeSkills(data, campus, cohort);
+
+  avgHseStudents.textContent = obj.avgHse;
+  hseTargetedStudents.textContent = obj.targetedStudents;
+}
+
+showLifeSkills(data);
+
+function showStudentSatisfaction(data, campus = campusDefault, cohort = cohortDefault) {
+  var satisfactionPercent = document.getElementById('satisfaction-percent');
+
+  satisfactionPercent.textContent = lastStudentSatisfaction(data, campus, cohort);
+}
+
+showStudentSatisfaction(data);
+
+function showTeacherRating(data, campus = campusDefault, cohort = cohortDefault) {
+  var teacherRating = document.getElementById('teacher-rating');
+
+  teacherRating.textContent = lastTeacherRating(data, campus, cohort);
+}
+
+showTeacherRating(data);
+
+function showLastJediMasterRating(data, campus = campusDefault, cohort = cohortDefault) {
+  var jediMasterRating = document.getElementById('jedi-rating');
   
+  jediMasterRating.textContent = lastJediMasterRating(data, campus, cohort);  
+}  
+
+showLastJediMasterRating(data);
