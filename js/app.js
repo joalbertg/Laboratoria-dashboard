@@ -61,11 +61,15 @@ for (var i = 0; i < dropdown.length; i++) {
 function showMenu() {
   var listMenu = this.getElementsByClassName('item-list')[0];
 
-  if (listMenu.classList.contains('hide')) {
+  listMenu.classList.toggle('hide');
+  listMenu.classList.toggle('show');
+
+  /* if (listMenu.classList.contains('hide')) {
+    
     listMenu.classList.remove('hide');
     listMenu.classList.add('show');
   } else {
     listMenu.classList.remove('show');
     listMenu.classList.add('hide');
-  }
+  } */
 }
