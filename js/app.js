@@ -52,11 +52,11 @@ function getRatings(data, campus, cohort) {
 /* var temp = getStudents(data); */
 
 // Funcionalidad del dropdown
-var dropdown = document.getElementsByClassName('dropdown');
-var totalDropdown = dropdown.length;
+var dropdowns = document.getElementsByClassName('dropdown');
+var totalDropdowns = dropdowns.length;
 
-for (var i = 0; i < totalDropdown; i++) {
-  dropdown[i].addEventListener('click', showMenu);
+for (var i = 0; i < totalDropdowns; i++) {
+  dropdowns[i].addEventListener('click', showMenu);
 }
 
 function showMenu(event) {
