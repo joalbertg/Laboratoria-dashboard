@@ -1,3 +1,5 @@
+// detalle de estudiantes
+
 function getScores(student) {
   var objScores = {};
   var sprints = student.sprints;
@@ -17,7 +19,7 @@ function getScores(student) {
   return objScores;
 }
 
-function studentDetail(data, campus = campusDefault, cohort = cohortDefault) {
+function studentsDetail(data, campus = campusDefault, cohort = cohortDefault) {
   var students = getStudents(data, campus, cohort);
   var totalStudents = students.length;
 
@@ -33,4 +35,4 @@ function studentDetail(data, campus = campusDefault, cohort = cohortDefault) {
   return students;
 }
 
-/* var temp = studentDetail(data); */
+/* var temp = studentsDetail(data); */
