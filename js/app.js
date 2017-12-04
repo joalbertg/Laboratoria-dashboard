@@ -65,7 +65,6 @@ function showMenu() {
   listMenu.classList.toggle('show');
 
   /* if (listMenu.classList.contains('hide')) {
-    
     listMenu.classList.remove('hide');
     listMenu.classList.add('show');
   } else {
