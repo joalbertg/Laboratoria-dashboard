@@ -126,10 +126,13 @@ menuSedeCohort.addEventListener('click', selectCampusCohort);
 
 // logica para seleccionar dropdown
 function selectCampusCohort(event) {
+  var currentMenu = document.getElementsByClassName('menu-nav active')[0];
+  var campus = null;
+  var cohort = null;
+
   if (event.target.className === 'line') {
     var totalCenters = Object.keys(centers).length;
     var centinel = false;
-    var campus = null;
 
     for (var i = 0; i < totalCenters && !centinel; i++) {
       if (centers[i].name === event.target.textContent.toLowerCase().trim()) {
@@ -139,11 +142,10 @@ function selectCampusCohort(event) {
     }
 
     var title = document.getElementsByClassName('cohort')[0].firstElementChild;
-    var cohort = Object.keys(data[campus.key])[0];
 
-    title.textContent = (campus.name + ' ' + cohort).toUpperCase();   
-    
-    callOverview(data, campus.key, cohort);
+    cohort = Object.keys(data[campus.key])[0];
+
+    title.textContent = (campus.name + ' ' + cohort).toUpperCase();
   } else {
     var centinel = false;
     var sibling = event.target;
@@ -158,7 +160,6 @@ function selectCampusCohort(event) {
     }
 
     var totalCenters = Object.keys(centers).length;
-    var campus = null;
 
     centinel = false;
 
@@ -170,13 +171,17 @@ function selectCampusCohort(event) {
     }
 
     var title = document.getElementsByClassName('cohort')[0].firstElementChild;
-    var cohort = event.target.textContent.toLowerCase().trim();
 
-    title.textContent = (campus.name + ' ' + cohort).toUpperCase();   
-
-    callOverview(data, campus.key, cohort);
+    cohort = event.target.textContent.toLowerCase().trim();
+    title.textContent = (campus.name + ' ' + cohort).toUpperCase();
   }
 
+  if (currentMenu.textContent.toLowerCase() === 'overview') {
+    callOverview(data, campus.key, cohort);
+  } else if (currentMenu.textContent.toLowerCase() === 'students') {
+    showStudentDetail(data, campus.key, cohort);
+  }
+  
   event.target.parentElement.classList.toggle('hide');
   event.target.parentElement.classList.toggle('show');
 }
